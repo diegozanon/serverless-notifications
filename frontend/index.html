@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Serverless Notifications</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <style TYPE="text/css">
+            input[type=button] {
+                margin: 10px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h2>Serverless Notifications</h2>
+            </div>
+            <div class="row">
+                <input id="btn-keys" type="button" class="btn btn-primary" value='Retrieve Keys'>
+                <input id="btn-connect" type="button" class="btn btn-primary" value='Connect'>
+            </div>
+            <div class="row">
+                <input id="message" type="text">
+                <input id="btn-send" type="button" class="btn btn-primary" value='Send Message'>
+            </div>
+            <div class="row">
+                <h3>Log Messages</h3>
+                <ul id="log"></ul>
+            </div>
+        </div>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="app.js"></script>
+        <script src="bundle.js"></script> <!-- IoT -->
+    </body>
+</html>
