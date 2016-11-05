@@ -17,9 +17,9 @@ Demo: http://serverless-notifications.zanon.io
 
 4. Edit the **app.js** file that is placed inside the **frontend** folder to use your endpoint (not mine)
 
-5. If you want to modify the IoT client:
-    5.1 Browse the **iot** folder
-    5.2 Edit the **index.js** file 
-    5.3 Install dependencies with `npm install`    
-    5.4 Run `node make-bundle`
-    5.5 Replace the **bundle.js** inside the **frontend** folder by this new **bundle.js** file
+5. If you want to modify the IoT client:  
+    5.1 Browse the **iot** folder  
+    5.2 Edit the **index.js** file   
+    5.3 Install dependencies with `npm install`      
+    5.4 Run `node make-bundle`  
+    5.5 Replace the **bundle.js** inside the **frontend** folder by this new **bundle.js** file  
