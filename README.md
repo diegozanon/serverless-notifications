@@ -15,9 +15,9 @@ Demo: http://serverless-notifications.zanon.io
 
 3. Deploy the Lambda function with `serverless deploy`
 
-4. Edit the **app.js** file that is placed inside the **frontend** folder to use your endpoint (not mine)
+4. Edit the **index.html** file that is placed inside the **frontend** folder to use your Lambda endpoint
 
-5. If you want to modify the IoT client:  
+5. To modify the IoT client, follow these steps:  
     5.1 Browse the **iot** folder  
     5.2 Edit the **index.js** file   
     5.3 Install dependencies with `npm install`      

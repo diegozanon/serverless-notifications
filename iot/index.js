@@ -60,7 +60,7 @@ $(document).ready(() => {
 
     $('#btn-keys').on('click', () => {
         $.ajax({
-            url: "https://j81qrc8un8.execute-api.us-east-1.amazonaws.com/dev/iot/keys",
+            url: window.lambdaEndpoint,
             success: (res) => {
                 addLog(`Endpoint: ${res.iotEndpoint}, 
                         Region: ${res.region}, 
