@@ -2,56 +2,50 @@
 
 const awsIot = require('aws-iot-device-sdk');
 
-const IoT = (() => { 
+let client, iotTopic;
+const IoT = { 
 
-    let client, iotTopic;
+    connect: (topic, iotEndpoint, region, accessKey, secretKey, sessionToken) => {
 
-    return { 
-    
-        connect: (iotTopic, iotEndpoint, region, accessKey, secretKey, sessionToken) => {
+        iotTopic = topic;
 
-            this.iotTopic = iotTopic;
+        client = awsIot.device({
+            region: region,
+            protocol: 'wss',
+            accessKeyId: accessKey,
+            secretKey: secretKey,
+            sessionToken: sessionToken,
+            port: 443,
+            host: iotEndpoint
+        });
 
-            this.client = awsIot.device({
-                region: region,
-                protocol: 'wss',
-                accessKeyId: accessKey,
-                secretKey: secretKey,
-                sessionToken: sessionToken,
-                port: 443,
-                host: iotEndpoint
-            });
+        client.on('connect', onConnect);
+        client.on('message', onMessage);            
+        client.on('error', onError);
+        client.on('reconnect', onReconnect);
+        client.on('offline', onOffline);
+        client.on('close', onClose);     
+    },
 
-            this.client.on('connect', () => {
-                this.client.subscribe(this.iotTopic);
-                this.onConnect();
-            });
+    send: (message) => {
+        client.publish(iotTopic, message);
+    }  
+}; 
 
-            this.client.on('message', this.onMessage);            
-            this.client.on('error', this.onError);
-            this.client.on('reconnect', this.onReconnect);
-            this.client.on('offline', this.onOffline);
-            this.client.on('close', this.onClose);     
-        },
+const onConnect = () => {
+    client.subscribe(iotTopic);
+    addLog('Connected');
+};
 
-        onConnect: () => {},
-        onMessage: (topic, message) => {},
-        onError: () => {},
-        onReconnect: () => {},
-        onOffline: () => {},
-        onClose: () => {},
-
-        send: (message) => {
-            this.client.publish(this.iotTopic, message);
-        }
-    }
-})(); 
-
-IoT.onMessage = (topic, message) => {
+const onMessage = (topic, message) => {
     addLog(message);
 };
 
-IoT.onClose = () => {
+const onError = () => {};
+const onReconnect = () => {};
+const onOffline = () => {};
+
+const onClose = () => {
     addLog('Connection failed');
 };
 
@@ -99,6 +93,7 @@ $(document).ready(() => {
     $('#btn-send').on('click', () => {
         const msg = $('#message').val();
         IoT.send(msg);    
+        $('#message').val('');
     });    
 });
 
