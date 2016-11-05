@@ -17,7 +17,7 @@ const createRoleParams = {
   RoleName: roleName
 };
 
-iam.createRole(createRoleParams, function(err, data) {
+iam.createRole(createRoleParams, (err, data) => {
   if (err) return console.log(err, err.stack);
 
   const attachPolicyParams = {

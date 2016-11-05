@@ -25,6 +25,9 @@ functions:
 
 package:
   exclude:
-    - create-role
-    - frontend
-    - iot
+    - .git/**
+    - create-role/**
+    - frontend/**
+    - iot/**
+    - LICENSE
+    - README.md
