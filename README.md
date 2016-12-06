@@ -3,9 +3,9 @@ Serverless Service for Serverless Notifications (AWS IoT)
 
 ## Tutorial
 
-Blog post: http://zanon.io/posts/serverless-notifications-on-aws
+Blog post: https://zanon.io/posts/serverless-notifications-on-aws
 
-Demo: http://serverless-notifications.zanon.io
+Demo: https://serverless-notifications.zanon.io
 
 ## Usage
 
