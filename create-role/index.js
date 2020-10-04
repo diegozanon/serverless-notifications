@@ -5,10 +5,10 @@ const roleName = 'serverless-notifications';
 
 // get the account id
 sts.getCallerIdentity({}, (err, data) => {
-  if (err) return console.log(err, err.stack);
+    if (err) return console.log(err, err.stack);
 
-  const createRoleParams = {
-    AssumeRolePolicyDocument: `{
+    const createRoleParams = {
+        AssumeRolePolicyDocument: `{
       "Version":"2012-10-17",
       "Statement":[{
           "Effect": "Allow",
@@ -19,15 +19,15 @@ sts.getCallerIdentity({}, (err, data) => {
         }
       ]
     }`,
-    RoleName: roleName
-  };
+        RoleName: roleName
+    };
 
-  // create role
-  iam.createRole(createRoleParams, (err, data) => {
-    if (err) return console.log(err, err.stack);
+    // create role
+    iam.createRole(createRoleParams, (err, data) => {
+        if (err) return console.log(err, err.stack);
 
-    const attachPolicyParams = {
-      PolicyDocument: `{
+        const attachPolicyParams = {
+            PolicyDocument: `{
         "Version": "2012-10-17",
         "Statement": [{
           "Action": ["iot:Connect", "iot:Subscribe", "iot:Publish", "iot:Receive"],
@@ -35,14 +35,14 @@ sts.getCallerIdentity({}, (err, data) => {
           "Effect": "Allow"
         }]
       }`,
-      PolicyName: roleName,
-      RoleName: roleName
-    };
+            PolicyName: roleName,
+            RoleName: roleName
+        };
 
-    // add iot policy
-    iam.putRolePolicy(attachPolicyParams, (err, data) => {
-      if (err) console.log(err, err.stack);
-      else     console.log(`Finished creating IoT Role: ${roleName}`);          
+        // add iot policy
+        iam.putRolePolicy(attachPolicyParams, (err, data) => {
+            if (err) console.log(err, err.stack);
+            else console.log(`Finished creating IoT Role: ${roleName}`);
+        });
     });
-  });
 });
