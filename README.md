@@ -24,4 +24,6 @@ Demo: https://serverless-notifications.zanon.dev
     5.2 Edit the **index.js** file   
     5.3 Install dependencies with `npm install`      
     5.4 Run `node make-bundle`  
-    5.5 Replace the **bundle.js** inside the **frontend** folder by this new **bundle.js** file  
+    5.5 Replace the **bundle.js** inside the **frontend** folder by this new **bundle.js** file   
+
+6. Deploy the frontend to S3  
